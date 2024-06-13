@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/accounts")
 class AccountController(private val repository: AccountInterface) {
 
     @PostMapping
-    fun create(@RequestBody account: Account): Account = repository.save(account)
+    fun create(@RequestBody account: Account)= repository.save(account)
 
     @GetMapping
     fun findAll():List<Account> = repository.findAll()
