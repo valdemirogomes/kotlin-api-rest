@@ -1,5 +1,6 @@
 package com.api.account
 
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -13,5 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 class AccountController(private val repository: AccountInterface) {
 
     @PostMapping
-    fun create(@RequestBody account: Account) = repository.save(account)
+    fun create(@RequestBody account: Account): ResponseEntity<Account> =
+       ResponseEntity.status(HttpStatus.CREATED).body(repository.save(account));
+
 }
